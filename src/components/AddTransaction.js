@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { GlobalProvider } from '../context/GlobalState';
 
 export const AddTransaction = () => {
     // Create piece of state (text) and function to manipulate that state (setText)
@@ -23,8 +24,12 @@ export const AddTransaction = () => {
                     >
                     <input type="number" value={amount} onChange={e => setAmount(e.target.value)} placeholder="Enter amount..." />
                 </div>
-                <button className="btn">Add transaction</button>
+                <button className="btn" onClick={onAddTransaction()}>Add transaction</button>
             </form>
         </>
     )
+}
+
+function onAddTransaction() {
+    console.log(`${AddTransaction.text} with amount ${AddTransaction.amount}`);
 }
