@@ -7,8 +7,6 @@ export const TransactionList = () => {
 // Using destructuring to pull out transactions list
 const { transactions } = useContext(GlobalContext);
 
-console.log(transactions.forEach((x) => console.log(x)));
-
     return (
         <>
             <h3>History</h3>
