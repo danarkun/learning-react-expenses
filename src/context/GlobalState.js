@@ -3,7 +3,8 @@ import AppReducer from './AppReducer';
 
 // Initial state
 const initialState = {
-    transactions: []
+    transactions: [],
+    totalTransactions: 0
 }
 
 // Create global context and allow to bring into other files
@@ -16,6 +17,7 @@ export const GlobalContext = createContext(initialState);
 //       It's called a reducer because it's the type of function you would pass to Array.prototype.reduce(reducer, ?initialValue)
 //       We are defining and passing dispatch as the function for the reducer to use on all elements of the state
 export const GlobalProvider = ({ children }) => {
+    // Setting our current state to initial state
     const [state, dispatch] = useReducer(AppReducer, initialState);
 
     // Actions that make calls to reducer
@@ -39,6 +41,7 @@ export const GlobalProvider = ({ children }) => {
     // Wrapping all our components (headers, transaction list etc... in our provider) as children
     return (<GlobalContext.Provider value={{
         transactions: state.transactions,
+        totalTransactions: state.totalTransactions,
         deleteTransaction,
         addTransaction
     }}>

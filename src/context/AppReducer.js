@@ -11,14 +11,16 @@ export default (state, action) => {
                 // Send current state
                 ...state,
                 // Set transactions[] value to all transactions apart from the one that's been deleted
-                transactions: state.transactions.filter(transaction => transaction.id !== action.payload)
+                transactions: state.transactions.filter(transaction => transaction.id !== action.payload),
+                totalTransactions: state.totalTransactions--
             }
             case 'ADD_TRANSACTION':
-                console.log(`${action.payload} ${action.paylod}`)
+                console.log(`${action.payload.id} ${action.type}`)
                 return {
                     //
                     ...state,
-                    transactions: [action.payload, ...state.transactions]
+                    transactions: [action.payload, ...state.transactions],
+                    totalTransactions: state.totalTransactions++
                 }
         default:
             return state;
