@@ -7,23 +7,20 @@ export default (state, action) => {
     // Create deep copy state as to not mutate original state (causes dupes and other unwanted behaviour)
     const newState = Object.assign({}, state);
     switch(action.type) {
-        case 'DELETE_TRANSACTION':
-                console.log(`${action.type} with action ${action.payload}`);
-                
+        case 'DELETE_TRANSACTION':                
             return {
                 // Send current state
                 ...newState,
                 // Set transactions[] value to all transactions apart from the one that's been deleted
                 transactions: newState.transactions.filter(transaction => transaction.id !== action.payload),
-                totalTransactions: newState.totalTransactions -= 1
+                totalTransactions: newState.totalTransactions - 1
             }
             case 'ADD_TRANSACTION':
-                console.log(`${action.payload.id} ${action.type}`)
                 return {
                     //
                     ...newState,
                     transactions: [action.payload, ...newState.transactions],
-                    totalTransactions: newState.totalTransactions += 1
+                    totalTransactions: newState.totalTransactions + 1
                 }
         default:
             return newState;
