@@ -4,7 +4,8 @@ import AppReducer from './AppReducer';
 // Initial state
 const initialState = {
     transactions: [],
-    totalTransactions: 0
+    totalTransactions: 0,
+    userList: []
 }
 
 // Create global context and allow to bring into other files
@@ -38,12 +39,22 @@ export const GlobalProvider = ({ children }) => {
         });
     }
 
+    function addUser(user)
+    {
+        dispatch({
+            type: 'ADD_USER',
+            payload: user
+        });
+    }
+
     // Wrapping all our components (headers, transaction list etc... in our provider) as children
     return (<GlobalContext.Provider value={{
         transactions: state.transactions,
         totalTransactions: state.totalTransactions,
+        userList: state.userList,
         deleteTransaction,
-        addTransaction
+        addTransaction,
+        addUser
     }}>
         {children}
     </GlobalContext.Provider>)

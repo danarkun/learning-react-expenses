@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { GlobalContext, GlobalProvider } from '../context/GlobalState';
+import { GlobalContext } from '../context/GlobalState';
 
 export const AddTransaction = () => {
     // Create piece of state (text) and function to manipulate that state (setText)

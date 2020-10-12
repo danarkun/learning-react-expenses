@@ -3,9 +3,9 @@ import { GlobalContext } from '../context/GlobalState';
 import { Transaction } from './Transaction';
 
 export const TransactionList = () => {
-// Get global context to have access to it's states
-// Using destructuring to pull out transactions list
-const { transactions } = useContext(GlobalContext);
+    // Get global context to have access to it's states
+    // Using destructuring to pull out transactions list
+    const { transactions } = useContext(GlobalContext);
 
     return (
         <>
