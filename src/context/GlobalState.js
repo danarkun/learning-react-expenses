@@ -39,12 +39,13 @@ export const GlobalProvider = ({ children }) => {
         });
     }
 
-    function addUser(user)
-    {
-        dispatch({
-            type: 'ADD_USER',
-            payload: user
-        });
+    function addUser(user) {
+        return Promise.resolve(
+            dispatch({
+                type: 'ADD_USER',
+                payload: user
+            })
+        );
     }
 
     // Wrapping all our components (headers, transaction list etc... in our provider) as children

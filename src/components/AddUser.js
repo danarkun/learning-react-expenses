@@ -1,9 +1,8 @@
 import React, { useState, useContext } from 'react'
-import { StyleSheetContext } from 'styled-components';
 import { GlobalContext } from '../context/GlobalState';
-import { useHistory } from "react-router-dom";
 
-export const AddUser = () => {
+// export const AddUser = ( {history} ) => {
+export const AddUser = ( {history} ) => {
     const [fname, setFname] = useState('');
     const [lname, setLname] = useState('');
     const [country, setCountry] = useState('Australia');
@@ -17,13 +16,10 @@ export const AddUser = () => {
             fname,
             country
         }
-    
-        addUser(newUser);
 
-        // const history = useHistory();
-        // history.push("/");
-
-        // document.location.href = "/ExpenseTracker";
+        addUser(newUser).then(() => {
+            history.push("/ExpenseTracker");
+        })
     }
 
     return (

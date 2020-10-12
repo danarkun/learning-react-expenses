@@ -8,8 +8,6 @@ import styled from 'styled-components'
 import { GlobalProvider } from './context/GlobalState';
 import { ExpenseTracker } from './components/ExpenseTracker';
 
-const defaultHistory = createBrowserHistory();
-
 const ContentColumn = styled.div`
   top: 200px;
   left: 50px;
@@ -24,11 +22,14 @@ const HeaderColumn = styled.div`
   width:100%;
 `;
 
+// Create history object to route with
+const history = createBrowserHistory();
+
 function App() {
   return (
     <GlobalProvider>
       <div>
-        <Router>
+        <Router history={history}>
           <HeaderColumn>
               <ul className="nav">
                 <li className="active">
@@ -42,8 +43,9 @@ function App() {
           <Switch>
             <ContentColumn>
               <Route path="/AddUser" component={AddUser} />
-                {/* <AddUser /> 
-                </Route>*/}
+                {/* // <AddUser /> */}
+                {/* <AddUser />
+                </Route> */}
               <Route path="/ExpenseTracker" component={ExpenseTracker} />
                 {/* <ExpenseTracker />
                 </Route>*/}
