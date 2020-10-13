@@ -11,7 +11,7 @@ export default (state, action) => {
             return {
                 // Send current state
                 ...newState,
-                // Set transactions[] value to all transactions apart from the one that's been deleted
+                // Set transactions[] value to all transactions apart from the one that's being deleted
                 transactions: newState.transactions.filter(transaction => transaction.id !== action.payload),
                 totalTransactions: newState.totalTransactions - 1
             }

@@ -9,11 +9,11 @@ export const Transaction = ({ transaction }) => {
     const { userList } = useContext(GlobalContext);
 
     // Get the first name of the user object with ID that matches the user id for this transaction
-    const { fname } = userList.find(x => x.id == transaction.user);
+    const { fname } = userList.find(x => x.id === transaction.user);
 
     return (
         <li className={transaction.amount > 0 ? "plus" : "minus"}>
-            {transaction.text} {fname} <span>{transaction.amount > 0 ? "+" : "-"}${Math.abs(transaction.amount)}</span><button className="delete-btn" onClick={() => deleteTransaction(transaction.id)}>x</button>
+            {transaction.text} ({fname}) <span>{transaction.amount > 0 ? "+" : "-"}${Math.abs(transaction.amount)}</span><button className="delete-btn" onClick={() => deleteTransaction(transaction.id)}>x</button>
         </li>
     )
 }

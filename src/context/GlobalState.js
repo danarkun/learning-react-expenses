@@ -5,18 +5,19 @@ import AppReducer from './AppReducer';
 const initialState = {
     transactions: [],
     totalTransactions: 0,
-    userList: [{
-        id: "1",
-        lname: "James",
-        fname: "Bel",
-        country: "Australia"
-    },
-    {
-        id: "2",
-        lname: "Arkun",
-        fname: "Dan",
-        country: "Australia"
-    }
+    userList: [
+        // {
+        //     id: "1",
+        //     lname: "James",
+        //     fname: "Bel",
+        //     country: "Australia"
+        // },
+        // {
+        //     id: "2",
+        //     lname: "Arkun",
+        //     fname: "Dan",
+        //     country: "Australia"
+        // }
     ]
 }
 
@@ -35,7 +36,7 @@ export const GlobalProvider = ({ children }) => {
 
     // Actions that make calls to reducer
 
-    // Dispatches a object to reducer with the type of object (DELETE_TRANSACTION) with the transactions id
+    // Dispatches an object to reducer with the type of object (DELETE_TRANSACTION) with the transactions id
     function deleteTransaction(id) {
         dispatch({
             type: 'DELETE_TRANSACTION',
@@ -44,10 +45,12 @@ export const GlobalProvider = ({ children }) => {
     }
 
     function addTransaction(transaction) {
-        dispatch({
-            type: 'ADD_TRANSACTION',
-            payload: transaction
-        });
+        return Promise.resolve(
+            dispatch({
+                type: 'ADD_TRANSACTION',
+                payload: transaction
+            })
+        );
     }
 
     function addUser(user) {
