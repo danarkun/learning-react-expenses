@@ -13,10 +13,11 @@ export const AddTransaction = () => {
     const [text, setText] = useState('');
     const [amount, setAmount] = useState(0);
     // Default user to first one if there are any
-    const [user, setUser] = useState(() => { 
-        const { id } = userList[0];
-        return id
-    });
+    const [user, setUser] = useState(userList[0]);
+    // const [user, setUser] = useState(() => { 
+    //     const { id } = userList[0];
+    //     return id
+    // });
 
     const onSubmit = e => {
         e.preventDefault();
@@ -24,9 +25,11 @@ export const AddTransaction = () => {
         const newTransaction = {
             id: generateID(),
             text,
-            amount: +amount
+            amount: +amount,
+            user
         }
 
+        console.log(newTransaction);
         addTransaction(newTransaction);
     }
 
@@ -49,7 +52,7 @@ export const AddTransaction = () => {
                 </div>
                 <div className="formcontrol">
                     <label htmlFor="user">Assign User</label><br />
-                    <select id="user" name="user" value={user} onChange={e => setUser(e.target.value)}>
+                    <select id="user" name="user" value={user.id} onChange={e => {console.log(e.target.value); setUser(e.target.value)}}>
                         {userList.map(user => (<User key={user.id} user={user} />))}
                     </select>
                 </div>
