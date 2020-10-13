@@ -12,6 +12,7 @@ export const AddUser = ( {history} ) => {
         e.preventDefault();
     
         const newUser = {
+            id: generateID(),
             lname,
             fname,
             country
@@ -20,6 +21,10 @@ export const AddUser = ( {history} ) => {
         addUser(newUser).then(() => {
             history.push("/ExpenseTracker");
         })
+    }
+
+    function generateID() {
+        return Math.floor(Math.random() * 1000000)
     }
 
     return (

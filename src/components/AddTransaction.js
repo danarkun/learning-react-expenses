@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import { User } from './User'
 import { GlobalContext } from '../context/GlobalState';
 
 export const AddTransaction = () => {
@@ -6,9 +7,16 @@ export const AddTransaction = () => {
     // See below, our text input field = to our component level text state (line below), onChanging this input field we update
     // the text state to the inputed value (e.target.value)
     // Same with amount
+    const { addTransaction } = useContext(GlobalContext);
+    const { userList } = useContext(GlobalContext);
+
     const [text, setText] = useState('');
     const [amount, setAmount] = useState(0);
-    const { addTransaction } = useContext(GlobalContext);
+    // Default user to first one if there are any
+    const [user, setUser] = useState(() => { 
+        const { id } = userList[0];
+        return id
+    });
 
     const onSubmit = e => {
         e.preventDefault();
@@ -38,6 +46,12 @@ export const AddTransaction = () => {
                     <label htmlFor="amount"
                     >Amount <br />(negative - expense, positive - income)</label>
                     <input type="number" value={amount} onChange={e => setAmount(e.target.value)} placeholder="Enter amount..." />
+                </div>
+                <div className="formcontrol">
+                    <label htmlFor="user">Assign User</label><br />
+                    <select id="user" name="user" value={user} onChange={e => setUser(e.target.value)}>
+                        {userList.map(user => (<User key={user.id} user={user} />))}
+                    </select>
                 </div>
                 <button className="btn">Add transaction</button>
             </form>

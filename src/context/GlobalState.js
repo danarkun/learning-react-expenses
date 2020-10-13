@@ -5,7 +5,19 @@ import AppReducer from './AppReducer';
 const initialState = {
     transactions: [],
     totalTransactions: 0,
-    userList: []
+    userList: [{
+        id: "1",
+        lname: "James",
+        fname: "Bel",
+        country: "Australia"
+    },
+    {
+        id: "2",
+        lname: "Arkun",
+        fname: "Dan",
+        country: "Australia"
+    }
+    ]
 }
 
 // Create global context and allow to bring into other files
@@ -22,7 +34,7 @@ export const GlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(AppReducer, initialState);
 
     // Actions that make calls to reducer
-    
+
     // Dispatches a object to reducer with the type of object (DELETE_TRANSACTION) with the transactions id
     function deleteTransaction(id) {
         dispatch({
@@ -31,8 +43,7 @@ export const GlobalProvider = ({ children }) => {
         });
     }
 
-    function addTransaction(transaction)
-    {
+    function addTransaction(transaction) {
         dispatch({
             type: 'ADD_TRANSACTION',
             payload: transaction
