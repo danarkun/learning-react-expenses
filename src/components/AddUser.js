@@ -27,11 +27,11 @@ export const AddUser = ( {history} ) => {
             <h1>ADD USER</h1>
             <form onSubmit={onSubmit}>
                 <label htmlFor="fname">First Name</label>
-                <input type="text" id="fname" name="firstname" placeholder="Your name.." value={fname} onChange= {e => setFname(e.target.value)}></input>
+                <input type="text" id="fname" class="textInput" name="firstname" placeholder="Your name.." value={fname} onChange= {e => setFname(e.target.value)}></input>
 
                 <label htmlFor="lname">Last Name</label>
-                <input type="text" id="lname" name="lastname" placeholder="Your last name.." value={lname} onChange={e => setLname(e.target.value)}></input>
-
+                <input type="text" id="lname" class="textInput" name="lastname" placeholder="Your last name.." value={lname} onChange={e => setLname(e.target.value)}></input>
+                
                 <label htmlFor="country">Country</label>
                 <select id="country" name="country" value={country} onChange={e => setCountry(e.target.value)}>
                     <option value="Australia">Australia</option>

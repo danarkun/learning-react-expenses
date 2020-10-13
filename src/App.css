@@ -101,6 +101,10 @@ input[type='number'] {
   width: 100%;
 }
 
+input[type=text]:focus {
+  background-color: lightgray;
+}
+
 .btn {
   cursor: pointer;
   background-color: #9c88ff;
@@ -196,4 +200,12 @@ div.totalTrans {
 
 .nav .active {
   background-color: #3974f5;
+}
+
+#fname.textInput {
+  padding:8px;display:block;border:none;border-bottom:1px solid #ccc;width:25%;
+}
+
+#lname.textInput {
+  padding:8px;display:block;border:none;border-bottom:1px solid #ccc;width:25%;
 }

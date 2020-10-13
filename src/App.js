@@ -9,7 +9,7 @@ import { GlobalProvider } from './context/GlobalState';
 import { ExpenseTracker } from './components/ExpenseTracker';
 
 const ContentColumn = styled.div`
-  top: 200px;
+  top: 100px;
   left: 50px;
   position: absolute;
   width: 100%;
