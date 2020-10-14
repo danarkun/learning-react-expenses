@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { User } from './User'
+import { UserInSelect } from './UserInSelect'
 import { GlobalContext } from '../context/GlobalState';
 
 export const AddTransaction = () => {
@@ -34,7 +34,7 @@ export const AddTransaction = () => {
         }
 
         addTransaction(newTransaction).then(() => {
-            document.getElementById("transForm").reset();
+            // document.getElementById("transForm").reset();
         })
     }
 
@@ -58,7 +58,7 @@ export const AddTransaction = () => {
                 <div className="formcontrol">
                     <label htmlFor="user">Assign User</label><br />
                     <select id="user" name="user" value={user} onChange={e => setUser(e.target.value)} required>
-                        {userList.map(user => (<User key={user.id} user={user} isList={false} />))}
+                        {userList.map(user => (<UserInSelect key={user.id} user={user} isList={false} />))}
                     </select>
                 </div>
                 <input type="submit" id="subButton" className="btn" value={userList.length === 0 ? "Add Atleast One User" : "Add transaction"}></input>

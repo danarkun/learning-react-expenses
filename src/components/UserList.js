@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
-import { User } from './User';
+import { UserInList } from './UserInList';
 
 export const UserList = () => {
     const { userList } = useContext(GlobalContext);
@@ -10,7 +10,7 @@ export const UserList = () => {
         <>
             <h3>Users</h3>
             <ul id="userList" className="list">
-                {userList.map(user => (<User key={user.id} user={user} isList={true}/>))}
+                {userList.map(user => (<UserInList key={user.id} user={user} isList={true}/>))}
             </ul>
         </>
     )

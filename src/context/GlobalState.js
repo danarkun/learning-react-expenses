@@ -81,6 +81,13 @@ export const GlobalProvider = ({ children }) => {
         );
     }
 
+    function deleteUser(id) {
+        dispatch({
+            type:'DELETE_USER',
+            payload: id
+        })
+    }
+
     // Wrapping all our components (headers, transaction list etc... in our provider) as children
     return (<GlobalContext.Provider value={{
         transactions: state.transactions,
@@ -88,7 +95,8 @@ export const GlobalProvider = ({ children }) => {
         userList: state.userList,
         deleteTransaction,
         addTransaction,
-        addUser
+        addUser,
+        deleteUser
     }}>
         {children}
     </GlobalContext.Provider>)
