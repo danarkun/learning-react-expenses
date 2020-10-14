@@ -1,8 +1,12 @@
 import React, { useState, useContext } from 'react'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { GlobalContext } from '../context/GlobalState';
 
+import history from '../history';
+
 // export const AddUser = ( {history} ) => {
-export const AddUser = ( {history} ) => {
+export const AddUser = ({history}) => {
+
     const [fname, setFname] = useState('');
     const [lname, setLname] = useState('');
     const [country, setCountry] = useState('Australia');
@@ -22,7 +26,7 @@ export const AddUser = ( {history} ) => {
             history.push("/ExpenseTracker");
         })
     }
-
+    
     function generateID() {
         return Math.floor(Math.random() * 1000000)
     }
