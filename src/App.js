@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link, Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-import { AddUser } from './components/AddUser';
 import { createBrowserHistory } from 'history';
 import styled from 'styled-components'
 
 import { GlobalProvider } from './context/GlobalState';
 import { ExpenseTracker } from './components/ExpenseTracker';
+import { AddUser } from './components/AddUser';
 
 const ContentColumn = styled.div`
   top: 100px;
@@ -31,24 +31,20 @@ function App() {
       <div>
         <Router history={history}>
           <HeaderColumn>
-              <ul className="nav">
-                <li className="active">
-                  <Link to="/AddUser">Add User</Link>
-                </li>
-                <li>
-                  <Link to="/ExpenseTracker">Expense Tracker</Link>
-                </li>
-              </ul>
+            <ul className="nav">
+              <li className="active">
+                <Link to="/AddUser">Add User</Link>
+              </li>
+              <li>
+                <Link to="/ExpenseTracker">Expense Tracker</Link>
+              </li>
+            </ul>
           </HeaderColumn>
           <Switch>
             <ContentColumn>
+              <Route exact path="/" component={ExpenseTracker} />
               <Route path="/AddUser" component={AddUser} />
-                {/* // <AddUser /> */}
-                {/* <AddUser />
-                </Route> */}
               <Route path="/ExpenseTracker" component={ExpenseTracker} />
-                {/* <ExpenseTracker />
-                </Route>*/}
             </ContentColumn>
           </Switch>
         </Router>

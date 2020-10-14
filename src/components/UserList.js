@@ -9,8 +9,8 @@ export const UserList = () => {
     return (
         <>
             <h3>Users</h3>
-            <ul id="list" className="list">
-                {userList.map(user => (<User key={user.fname} user={user} />))}
+            <ul id="userList" className="list">
+                {userList.map(user => (<User key={user.id} user={user} isList={true}/>))}
             </ul>
         </>
     )

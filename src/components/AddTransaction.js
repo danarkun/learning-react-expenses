@@ -58,7 +58,7 @@ export const AddTransaction = () => {
                 <div className="formcontrol">
                     <label htmlFor="user">Assign User</label><br />
                     <select id="user" name="user" value={user} onChange={e => setUser(e.target.value)} required>
-                        {userList.map(user => (<User key={user.id} user={user} />))}
+                        {userList.map(user => (<User key={user.id} user={user} isList={false} />))}
                     </select>
                 </div>
                 <input type="submit" id="subButton" className="btn" value={userList.length === 0 ? "Add Atleast One User" : "Add transaction"}></input>

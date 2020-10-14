@@ -3,21 +3,40 @@ import AppReducer from './AppReducer';
 
 // Initial state
 const initialState = {
-    transactions: [],
+    transactions: [
+        {
+            id: 321890,
+            text: "Salary",
+            amount: 2000,
+            user: "1"
+        },
+        {
+            id: 839217,
+            text: "Groceries",
+            amount: -125,
+            user: "2"
+        }
+    ],
     totalTransactions: 0,
     userList: [
-        // {
-        //     id: "1",
-        //     lname: "James",
-        //     fname: "Bel",
-        //     country: "Australia"
-        // },
-        // {
-        //     id: "2",
-        //     lname: "Arkun",
-        //     fname: "Dan",
-        //     country: "Australia"
-        // }
+        {
+            id: "1",
+            lname: "James",
+            fname: "Bel",
+            country: "Australia"
+        },
+        {
+            id: "2",
+            lname: "Arkun",
+            fname: "Dan",
+            country: "Australia"
+        },
+        {
+            id: 10251029,
+            lane: "Arkun",
+            fname: "Sophie",
+            country: "Canada"
+        }
     ]
 }
 
