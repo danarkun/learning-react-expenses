@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import { GlobalProvider } from './context/GlobalState';
 import { ExpenseTracker } from './components/ExpenseTracker';
 import { AddUser } from './components/AddUser';
+import { TransactionViewer } from './components/TransactionViewer';
 
 const ContentColumn = styled.div`
   top: 100px;
@@ -38,6 +39,9 @@ function App() {
               <li>
                 <Link to="/ExpenseTracker">Expense Tracker</Link>
               </li>
+              <li>
+                <Link to="/TransactionViewer">Transaction Viewer</Link>
+              </li>
             </ul>
           </HeaderColumn>
           <Switch>
@@ -45,6 +49,7 @@ function App() {
               <Route exact path="/" component={ExpenseTracker} />
               <Route path="/AddUser" component={AddUser} />
               <Route path="/ExpenseTracker" component={ExpenseTracker} />
+              <Route path="/TransactionViewer" component={TransactionViewer} />
             </ContentColumn>
           </Switch>
         </Router>

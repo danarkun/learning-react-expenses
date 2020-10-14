@@ -13,15 +13,7 @@ export const AddTransaction = () => {
     const [text, setText] = useState('');
     const [amount, setAmount] = useState('');
     // Default user to first one if there are any
-    const [user, setUser] = useState(() => {
-        if (userList.length === 0)
-            return ""
-        else {
-            const { id } = userList[0];
-            return id
-
-        }
-    });
+    const [user, setUser] = useState(SetDefaultUser());
 
     const onSubmit = e => {
         e.preventDefault();
@@ -34,18 +26,37 @@ export const AddTransaction = () => {
         }
 
         addTransaction(newTransaction).then(() => {
-            // document.getElementById("transForm").reset();
+            ResetForm();
         })
+    }
+
+    function SetDefaultUser() {
+        if (userList.length === 0) {
+            return "";
+        }
+        else {
+            const { id } = userList[0];
+            return id;
+        }
+    }
+
+    function ResetForm() {
+        console.log("RESETTING");
+        setText('');
+        setAmount('');
     }
 
     function generateID() {
         return Math.floor(Math.random() * 1000000)
     }
+    
+    // TODO when user is deleted, onChange() doesn't get called to set the currently selected transaction user,
+    // thus uses the previously selected users ID (now undefined)
 
     return (
         <>
             <h3>Add new transaction</h3>
-            <form id="transForm" onSubmit={onSubmit}>
+            <form name="transForm" id="transForm" onSubmit={onSubmit}>
                 <div className="form-control">
                     <label htmlFor="text">Text</label>
                     <input type="text" value={text} onChange={e => setText(e.target.value)} placeholder="Enter text..." required />

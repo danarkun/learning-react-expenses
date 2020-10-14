@@ -9,14 +9,17 @@ export const Transaction = ({ transaction }) => {
     const { userList } = useContext(GlobalContext);
 
     var purchaser;
+
     // Get the first name of the user object with ID that matches the user id for this transaction
-    if (userList.find(x => x.id === transaction.user) === undefined)
+
+    // If they've been deleted and we've lost reference to them
+    if (userList.find(x => x.id == transaction.user) === undefined)
     {
-        purchaser = "Deleted User";
+        purchaser = "deleted used";
     }
     else
     {
-        purchaser = userList.find(x => x.id === transaction.user).fname;
+        purchaser = userList.find(x => x.id == transaction.user).fname;
     }
 
     return (
