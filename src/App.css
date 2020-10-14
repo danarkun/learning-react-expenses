@@ -101,9 +101,13 @@ input[type='number'] {
   width: 100%;
 }
 
+input[type=text]:focus {
+  background-color: lightgray;
+}
+
 .btn {
   cursor: pointer;
-  background-color: #9c88ff;
+  background-color: #3974f5;
   box-shadow: var(--box-shadow);
   color: #fff;
   border: 0;
@@ -166,5 +170,42 @@ input[type='number'] {
 
 div.totalTrans {
   position: relative;
-  left: 100px;
+}
+
+.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.nav li {
+  float: left;
+  display: inline;
+  border-right: 1px solid #bbb;
+}
+
+.nav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.nav li a:hover {
+  background-color: #111;
+}
+
+.nav .active {
+  background-color: #3974f5;
+}
+
+#fname.textInput {
+  padding:8px;display:block;border:none;border-bottom:1px solid #ccc;width:25%;
+}
+
+#lname.textInput {
+  padding:8px;display:block;border:none;border-bottom:1px solid #ccc;width:25%;
 }

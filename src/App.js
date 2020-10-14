@@ -1,26 +1,55 @@
 import React from 'react';
+import { Link, Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-import { Header } from './components/Header';
-import { Balance } from './components/Balance';
-import { IncomeExpenses } from './components/IncomeExpenses';
-import { TransactionList } from './components/TransactionList';
-import { AddTransaction } from './components/AddTransaction';
-import { TotalTransactions } from './components/TotalTransactions';
+import { createBrowserHistory } from 'history';
+import styled from 'styled-components'
 
 import { GlobalProvider } from './context/GlobalState';
+import { ExpenseTracker } from './components/ExpenseTracker';
+import { AddUser } from './components/AddUser';
+
+const ContentColumn = styled.div`
+  top: 100px;
+  left: 50px;
+  position: absolute;
+  width: 100%;
+`;
+
+const HeaderColumn = styled.div`
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  width:100%;
+`;
+
+// Create history object to route with
+const history = createBrowserHistory();
 
 function App() {
   return (
     <GlobalProvider>
-      <Header />
-      <div className="container">
-        <Balance />
-        <IncomeExpenses />
-        <TotalTransactions />
-        <TransactionList />
-        <AddTransaction />
-      </div>
-    </GlobalProvider>
+      <div>
+        <Router history={history}>
+          <HeaderColumn>
+            <ul className="nav">
+              <li className="active">
+                <Link to="/AddUser">Add User</Link>
+              </li>
+              <li>
+                <Link to="/ExpenseTracker">Expense Tracker</Link>
+              </li>
+            </ul>
+          </HeaderColumn>
+          <Switch>
+            <ContentColumn>
+              <Route exact path="/" component={ExpenseTracker} />
+              <Route path="/AddUser" component={AddUser} />
+              <Route path="/ExpenseTracker" component={ExpenseTracker} />
+            </ContentColumn>
+          </Switch>
+        </Router>
+      </div >
+    </GlobalProvider >
   );
 }
 

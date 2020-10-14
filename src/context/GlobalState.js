@@ -3,8 +3,41 @@ import AppReducer from './AppReducer';
 
 // Initial state
 const initialState = {
-    transactions: [],
-    totalTransactions: 0
+    transactions: [
+        {
+            id: 321890,
+            text: "Salary",
+            amount: 2000,
+            user: "1"
+        },
+        {
+            id: 839217,
+            text: "Groceries",
+            amount: -125,
+            user: "2"
+        }
+    ],
+    totalTransactions: 0,
+    userList: [
+        {
+            id: "1",
+            lname: "James",
+            fname: "Bel",
+            country: "Australia"
+        },
+        {
+            id: "2",
+            lname: "Arkun",
+            fname: "Dan",
+            country: "Australia"
+        },
+        {
+            id: 10251029,
+            lane: "Arkun",
+            fname: "Sophie",
+            country: "Canada"
+        }
+    ]
 }
 
 // Create global context and allow to bring into other files
@@ -21,8 +54,8 @@ export const GlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(AppReducer, initialState);
 
     // Actions that make calls to reducer
-    
-    // Dispatches a object to reducer with the type of object (DELETE_TRANSACTION) with the transactions id
+
+    // Dispatches an object to reducer with the type of object (DELETE_TRANSACTION) with the transactions id
     function deleteTransaction(id) {
         dispatch({
             type: 'DELETE_TRANSACTION',
@@ -30,20 +63,40 @@ export const GlobalProvider = ({ children }) => {
         });
     }
 
-    function addTransaction(transaction)
-    {
+    function addTransaction(transaction) {
+        return Promise.resolve(
+            dispatch({
+                type: 'ADD_TRANSACTION',
+                payload: transaction
+            })
+        );
+    }
+
+    function addUser(user) {
+        return Promise.resolve(
+            dispatch({
+                type: 'ADD_USER',
+                payload: user
+            })
+        );
+    }
+
+    function deleteUser(id) {
         dispatch({
-            type: 'ADD_TRANSACTION',
-            payload: transaction
-        });
+            type:'DELETE_USER',
+            payload: id
+        })
     }
 
     // Wrapping all our components (headers, transaction list etc... in our provider) as children
     return (<GlobalContext.Provider value={{
         transactions: state.transactions,
         totalTransactions: state.totalTransactions,
+        userList: state.userList,
         deleteTransaction,
-        addTransaction
+        addTransaction,
+        addUser,
+        deleteUser
     }}>
         {children}
     </GlobalContext.Provider>)
