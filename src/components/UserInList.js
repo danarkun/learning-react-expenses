@@ -1,9 +1,7 @@
-import React, { useContext } from 'react';
-import { GlobalContext, GlobalState } from '../context/GlobalState';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 export const UserInList = ( {user, isList} ) => {
-    const { deleteUser } = useContext( GlobalContext );
     const history = useHistory();
 
     return (

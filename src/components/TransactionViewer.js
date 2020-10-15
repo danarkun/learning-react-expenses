@@ -25,7 +25,8 @@ export const TransactionViewer = () => {
         purchaser = "deleted used";
     }
     else {
-        purchaser = userList.find(x => x.id == transaction.user).fname;
+        var user = userList.find(x => x.id == transaction.user);
+        purchaser = `${user.fname} ${user.lname}`;
     }
 
     function DeleteTransaction() {

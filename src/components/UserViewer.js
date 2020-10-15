@@ -9,7 +9,6 @@ export const UserViewer = () => {
     const { deleteUser } = useContext(GlobalContext);
 
     const history = useHistory();
-    var purchaser;
 
     useEffect(() => {
         // Get user that we've been passed from clicked User component
