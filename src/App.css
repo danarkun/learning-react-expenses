@@ -118,6 +118,10 @@ input[type=text]:focus {
   width: 100%;
 }
 
+.blocked {
+  background-color: rgb(204, 204, 204);
+}
+
 .deleteButton {
   width: 15%;
 }
@@ -218,3 +222,11 @@ div.totalTrans {
 #lname.textInput {
   padding:8px;display:block;border:none;border-bottom:1px solid #ccc;width:25%;
 }
+
+/* select {
+  width: 50%;
+}
+
+select > option {
+  background-color: #2ecc71;
+} */

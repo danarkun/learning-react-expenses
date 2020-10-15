@@ -58,12 +58,12 @@ export const AddTransaction = () => {
             <h3>Add new transaction</h3>
             <form name="transForm" id="transForm" onSubmit={onSubmit}>
                 <div className="form-control">
-                    <label htmlFor="text">Text</label>
+                    <label htmlFor="text"><b>Text</b></label>
                     <input type="text" value={text} onChange={e => setText(e.target.value)} placeholder="Enter text..." required />
                 </div>
                 <div className="form-control">
                     <label htmlFor="amount"
-                    >Amount <br />(negative - expense, positive - income)</label>
+                    ><b>Amount</b> <br />(Negative: expense, Positive: income)</label>
                     <input type="number" value={amount} onChange={e => setAmount(e.target.value)} placeholder="Enter amount..." required/>
                 </div>
                 <div className="formcontrol">
@@ -72,7 +72,7 @@ export const AddTransaction = () => {
                         {userList.map(user => (<UserInSelect key={user.id} user={user} isList={false} />))}
                     </select>
                 </div>
-                <input type="submit" id="subButton" className="btn" value={userList.length === 0 ? "Add Atleast One User" : "Add transaction"}></input>
+                <input type="submit" id="subButton" className={`${userList.length === 0 ? "blocked" : ""} btn`} value={userList.length === 0 ? "Add Atleast One User" : "Add transaction"}></input>
             </form>
         </>
     )
