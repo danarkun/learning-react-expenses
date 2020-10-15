@@ -129,6 +129,11 @@ input[type=text]:focus {
   margin-bottom: 40px;
 }
 
+#transList:hover {
+  cursor: pointer;
+  background-color: rgb(90, 194, 235);
+}
+
 .list li {
   background-color: #fff;
   box-shadow: var(--box-shadow);
