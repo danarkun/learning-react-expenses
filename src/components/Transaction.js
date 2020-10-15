@@ -24,7 +24,7 @@ export const Transaction = ({ transaction }) => {
 
     // On clicking this element, route page to TransactionViewer and pass it this transaction
     return (
-        <li className={transaction.amount > 0 ? "plus" : "minus", "clickableList"} onClick={() => history.push({
+        <li className={`${transaction.amount > 0 ? "plus" : "minus"} clickableList`} onClick={() => history.push({
             pathname: "/TransactionViewer",
             search: `?=${transaction.id}`,
             state: { detail: transaction}

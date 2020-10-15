@@ -31,8 +31,8 @@ export const UserViewer = () => {
             <h1>USER VIEWER</h1>
             <br />
 
-            <p>User Name: {user.fname} {user.lname}</p>
-            <p> User added at: {user.timeStamp == undefined ? "Unknown time" : user.timeStamp.toString()}</p>
+            <p><b>User Name: </b>{user.fname} {user.lname}</p>
+            <p> <b>User added at: </b>{user.timeStamp == undefined ? "Unknown time" : user.timeStamp.toString()}</p>
             <button className="btn deleteButton" onClick={() => DeleteUser()}>DELETE USER</button>
         </div>
     )
