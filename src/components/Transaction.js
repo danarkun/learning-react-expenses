@@ -2,10 +2,6 @@ import React, { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import { useHistory } from 'react-router-dom';
 
-
-import history from '../history';
-import TransactionViewer from './TransactionViewer';
-
 // Passing a transaction through as a prop to display (from TransactionList)
 export const Transaction = ({ transaction }) => {
     // Get reference to deletetransaction function from global state

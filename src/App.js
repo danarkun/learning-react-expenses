@@ -7,8 +7,6 @@ import { GlobalProvider } from './context/GlobalState';
 import { ExpenseTracker } from './components/ExpenseTracker';
 import { AddUser } from './components/AddUser';
 import { TransactionViewer } from './components/TransactionViewer';
-import history from './history'
-import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
 
 const ContentColumn = styled.div`
   top: 100px;
@@ -28,7 +26,7 @@ function App() {
   return (
     <GlobalProvider>
       <div>
-        <Router history={history}>
+        <Router>
           <HeaderColumn>
             <ul className="nav">
               <li className="active">

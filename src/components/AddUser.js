@@ -2,16 +2,15 @@ import React, { useState, useContext } from 'react'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { GlobalContext } from '../context/GlobalState';
 
-import history from '../history';
-
 // export const AddUser = ( {history} ) => {
-export const AddUser = ({history}) => {
+export const AddUser = () => {
 
     const [fname, setFname] = useState('');
     const [lname, setLname] = useState('');
     const [country, setCountry] = useState('Australia');
     const { addUser } = useContext(GlobalContext);
-
+    const history = useHistory();
+    
     const onSubmit = e => {
         e.preventDefault();
     

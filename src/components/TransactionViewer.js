@@ -30,8 +30,7 @@ export const TransactionViewer = () => {
             <h1>TRANSACTION VIEWER</h1>
             <p>Transaction: {transaction.text}</p>
             <p>Transaction Amount: {transaction.amount >= 0 ? "+" : "-"}${Math.abs(transaction.amount)}</p>
-            <p>Transaction ID: {transaction.id}</p>
-            <p>Transaction Name: {purchaser}</p>
+            <p>Submitted by: {purchaser}</p>
 
             <button  onClick={() => DeleteTransaction()}>DELETE TRANSACTION</button>
         </div>
