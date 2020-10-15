@@ -1,6 +1,10 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
+import { useHistory } from 'react-router-dom';
 
+
+import history from '../history';
+import TransactionViewer from './TransactionViewer';
 
 // Passing a transaction through as a prop to display (from TransactionList)
 export const Transaction = ({ transaction }) => {
@@ -8,20 +12,33 @@ export const Transaction = ({ transaction }) => {
     const { deleteTransaction } = useContext(GlobalContext);
     const { userList } = useContext(GlobalContext);
 
+    const history = useHistory();
+
     var purchaser;
+
     // Get the first name of the user object with ID that matches the user id for this transaction
-    if (userList.find(x => x.id === transaction.user) === undefined)
-    {
-        purchaser = "Deleted User";
+
+    // If they've been deleted and we've lost reference to them
+    if (userList.find(x => x.id == transaction.user) === undefined) {
+        purchaser = "deleted used";
     }
-    else
-    {
-        purchaser = userList.find(x => x.id === transaction.user).fname;
+    else {
+        purchaser = userList.find(x => x.id == transaction.user).fname;
     }
 
+    function UseHistory() {
+        useHistory().push('/TransactionViewer');
+    }
+
+    // On clicking this element, route page to TransactionViewer and pass it this transaction
     return (
-        <li className={transaction.amount > 0 ? "plus" : "minus"}>
-            {transaction.text} ({purchaser}) <span>{transaction.amount > 0 ? "+" : "-"}${Math.abs(transaction.amount)}</span><button className="delete-btn" onClick={() => deleteTransaction(transaction.id)}>x</button>
+        <li className={transaction.amount > 0 ? "plus" : "minus"} onClick={() => history.push({
+            pathname: "/TransactionViewer",
+            search: '?query_abc',
+            state: { detail: transaction}
+        }
+        )}>
+            {transaction.text} ({purchaser}) <span>{transaction.amount > 0 ? "+" : "-"}${Math.abs(transaction.amount)}</span>
         </li>
     )
 }

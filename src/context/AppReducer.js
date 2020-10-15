@@ -1,3 +1,5 @@
+import { AddTransaction } from "../components/AddTransaction";
+
 // How we specificy app state changes in response to actions to our context
 // Actions sent for reduction from GlobalState get handled depending on their action type
 // Reducer is the way to change your state and pass down to components
@@ -29,9 +31,11 @@ export default (state, action) => {
         case 'DELETE_USER':
             return {
                 ...newState,
-                userList: newState.userList.filter(user => user.id !== action.payload)
+                userList: newState.userList.filter(user => user.id !== action.payload),
+                //, tell AddTransaction user select menu to update it's current user
             }
         default:
             return newState;
     }
+    // Callback to all listening components
 }

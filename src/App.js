@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link, Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-import { createBrowserHistory } from 'history';
 import styled from 'styled-components'
 
 import { GlobalProvider } from './context/GlobalState';
 import { ExpenseTracker } from './components/ExpenseTracker';
 import { AddUser } from './components/AddUser';
+import { TransactionViewer } from './components/TransactionViewer';
+import history from './history'
+import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
 
 const ContentColumn = styled.div`
   top: 100px;
@@ -21,9 +23,6 @@ const HeaderColumn = styled.div`
   position: absolute;
   width:100%;
 `;
-
-// Create history object to route with
-const history = createBrowserHistory();
 
 function App() {
   return (
@@ -45,6 +44,7 @@ function App() {
               <Route exact path="/" component={ExpenseTracker} />
               <Route path="/AddUser" component={AddUser} />
               <Route path="/ExpenseTracker" component={ExpenseTracker} />
+              <Route path="/TransactionViewer" component={TransactionViewer} />
             </ContentColumn>
           </Switch>
         </Router>
