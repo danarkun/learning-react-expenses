@@ -41,7 +41,6 @@ export const AddTransaction = () => {
     }
 
     function ResetForm() {
-        console.log("RESETTING");
         setText('');
         setAmount('');
     }

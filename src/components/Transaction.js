@@ -26,10 +26,6 @@ export const Transaction = ({ transaction }) => {
         purchaser = userList.find(x => x.id == transaction.user).fname;
     }
 
-    function UseHistory() {
-        useHistory().push('/TransactionViewer');
-    }
-
     // On clicking this element, route page to TransactionViewer and pass it this transaction
     return (
         <li className={transaction.amount > 0 ? "plus" : "minus"} onClick={() => history.push({

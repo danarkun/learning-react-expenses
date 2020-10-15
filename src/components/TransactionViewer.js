@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
 import { GlobalContext } from '../context/GlobalState';
 
@@ -7,6 +7,9 @@ export const TransactionViewer = () => {
     const location = useLocation();
     const [transaction, setTransaction] = useState(location.state.detail);
     const { userList } = useContext(GlobalContext);
+    const { deleteTransaction } = useContext(GlobalContext);
+
+    const history = useHistory();
     var purchaser;
 
     if (userList.find(x => x.id == transaction.user) === undefined) {
@@ -14,6 +17,12 @@ export const TransactionViewer = () => {
     }
     else {
         purchaser = userList.find(x => x.id == transaction.user).fname;
+    }
+
+    function DeleteTransaction() {
+        deleteTransaction(transaction.id).then(() => {
+            history.push("./ExpenseTracker");
+        })
     }
     
     return (
@@ -23,6 +32,8 @@ export const TransactionViewer = () => {
             <p>Transaction Amount: {transaction.amount >= 0 ? "+" : "-"}${Math.abs(transaction.amount)}</p>
             <p>Transaction ID: {transaction.id}</p>
             <p>Transaction Name: {purchaser}</p>
+
+            <button  onClick={() => DeleteTransaction()}>DELETE TRANSACTION</button>
         </div>
     )
 }

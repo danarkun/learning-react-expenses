@@ -57,10 +57,12 @@ export const GlobalProvider = ({ children }) => {
 
     // Dispatches an object to reducer with the type of object (DELETE_TRANSACTION) with the transactions id
     function deleteTransaction(id) {
-        dispatch({
-            type: 'DELETE_TRANSACTION',
-            payload: id
-        });
+        return Promise.resolve(
+            dispatch({
+                type: 'DELETE_TRANSACTION',
+                payload: id
+            })
+        );
     }
 
     function addTransaction(transaction) {
@@ -83,7 +85,7 @@ export const GlobalProvider = ({ children }) => {
 
     function deleteUser(id) {
         dispatch({
-            type:'DELETE_USER',
+            type: 'DELETE_USER',
             payload: id
         })
     }
