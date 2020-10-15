@@ -118,6 +118,10 @@ input[type=text]:focus {
   width: 100%;
 }
 
+.deleteButton {
+  width: 15%;
+}
+
 .btn:focus,
 .delete-btn:focus {
   outline: 0;
@@ -131,7 +135,7 @@ input[type=text]:focus {
 
 #transList:hover {
   cursor: pointer;
-  background-color: rgb(90, 194, 235);
+  background-color: rgb(204, 204, 204);
 }
 
 .list li {

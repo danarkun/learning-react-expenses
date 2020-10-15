@@ -31,8 +31,9 @@ export const TransactionViewer = () => {
             <p>Transaction: {transaction.text}</p>
             <p>Transaction Amount: {transaction.amount >= 0 ? "+" : "-"}${Math.abs(transaction.amount)}</p>
             <p>Submitted by: {purchaser}</p>
+            <p> Submitted at : {transaction.timeStamp == undefined ? "Unknown time" : transaction.timeStamp.toString()}</p>
 
-            <button  onClick={() => DeleteTransaction()}>DELETE TRANSACTION</button>
+            <button className="btn deleteButton" onClick={() => DeleteTransaction()}>DELETE TRANSACTION</button>
         </div>
     )
 }

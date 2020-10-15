@@ -22,7 +22,8 @@ export const AddTransaction = () => {
             id: generateID(),
             text,
             amount: +amount,
-            user
+            user,
+            timeStamp: new Date()
         }
 
         addTransaction(newTransaction).then(() => {
