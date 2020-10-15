@@ -7,6 +7,7 @@ import { GlobalProvider } from './context/GlobalState';
 import { ExpenseTracker } from './components/ExpenseTracker';
 import { AddUser } from './components/AddUser';
 import { TransactionViewer } from './components/TransactionViewer';
+import { UserViewer } from './components/UserViewer';
 
 const ContentColumn = styled.div`
   top: 100px;
@@ -43,6 +44,7 @@ function App() {
               <Route path="/AddUser" component={AddUser} />
               <Route path="/ExpenseTracker" component={ExpenseTracker} />
               <Route path="/TransactionViewer" component={TransactionViewer} />
+              <Route path="/UserViewer" component={UserViewer} />
             </ContentColumn>
           </Switch>
         </Router>

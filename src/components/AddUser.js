@@ -10,7 +10,7 @@ export const AddUser = () => {
     const [country, setCountry] = useState('Australia');
     const { addUser } = useContext(GlobalContext);
     const history = useHistory();
-    
+
     const onSubmit = e => {
         e.preventDefault();
     
@@ -18,7 +18,8 @@ export const AddUser = () => {
             id: generateID(),
             lname,
             fname,
-            country
+            country,
+            timeStamp: new Date()
         }
 
         addUser(newUser).then(() => {
@@ -33,6 +34,7 @@ export const AddUser = () => {
     return (
         <div>
             <h1>ADD USER</h1>
+            <br />
             <form onSubmit={onSubmit}>
                 <label htmlFor="fname">First Name</label>
                 <input type="text" id="fname" className="textInput" name="firstname" placeholder="Your name.." value={fname} onChange= {e => setFname(e.target.value)} required></input>

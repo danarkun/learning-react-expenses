@@ -12,6 +12,15 @@ export const TransactionViewer = () => {
     const history = useHistory();
     var purchaser;
 
+    useEffect(() => {
+        // Get transaction that we've been passed from clicked Transaction component
+        setTransaction(location.state.detail);
+    
+        return() => {
+            // Cleanup code
+        }
+    }, [location])
+
     if (userList.find(x => x.id == transaction.user) === undefined) {
         purchaser = "deleted used";
     }
@@ -28,6 +37,7 @@ export const TransactionViewer = () => {
     return (
         <div>
             <h1>TRANSACTION VIEWER</h1>
+            <br />
             <p>Transaction: {transaction.text}</p>
             <p>Transaction Amount: {transaction.amount >= 0 ? "+" : "-"}${Math.abs(transaction.amount)}</p>
             <p>Submitted by: {purchaser}</p>
@@ -38,12 +48,3 @@ export const TransactionViewer = () => {
     )
 }
 
-
-    // useEffect(() => {
-    //     // Get transaction that we've been passed from clicked Transaction component
-    //     setTransaction(location.state.detail);
-
-    //     return() => {
-    //         console.log("CLEANING UP");
-    //     }
-    // }, [location])

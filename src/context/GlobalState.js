@@ -8,13 +8,15 @@ const initialState = {
             id: 321890,
             text: "Salary",
             amount: 2000,
-            user: 1
+            user: 1,
+            timeStamp: new Date()
         },
         {
             id: 839217,
             text: "Groceries",
             amount: -125,
-            user: 2
+            user: 2,
+            timeStamp: new Date()
         }
     ],
     totalTransactions: 0,
@@ -23,19 +25,22 @@ const initialState = {
             id: 1,
             lname: "James",
             fname: "Bel",
-            country: "Australia"
+            country: "Australia",
+            timeStamp: new Date()
         },
         {
             id: 2,
             lname: "Arkun",
             fname: "Dan",
-            country: "Australia"
+            country: "Australia",
+            timeStamp: new Date()
         },
         {
             id: 10251029,
             lane: "Arkun",
             fname: "Sophie",
-            country: "Canada"
+            country: "Canada",
+            timeStamp: new Date()
         }
     ]
 }
@@ -84,10 +89,12 @@ export const GlobalProvider = ({ children }) => {
     }
 
     function deleteUser(id) {
-        dispatch({
-            type: 'DELETE_USER',
-            payload: id
-        })
+        return Promise.resolve(
+            dispatch({
+                type: 'DELETE_USER',
+                payload: id
+            })
+        );
     }
 
     // Wrapping all our components (headers, transaction list etc... in our provider) as children

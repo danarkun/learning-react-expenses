@@ -133,7 +133,7 @@ input[type=text]:focus {
   margin-bottom: 40px;
 }
 
-#transList:hover {
+.clickableList:hover {
   cursor: pointer;
   background-color: rgb(204, 204, 204);
 }

@@ -4,8 +4,8 @@ import { useHistory } from 'react-router-dom';
 
 // Passing a transaction through as a prop to display (from TransactionList)
 export const Transaction = ({ transaction }) => {
-    // Get reference to deletetransaction function from global state
-    const { deleteTransaction } = useContext(GlobalContext);
+
+    // Get reference to our list of users from global state
     const { userList } = useContext(GlobalContext);
 
     const history = useHistory();
@@ -24,7 +24,7 @@ export const Transaction = ({ transaction }) => {
 
     // On clicking this element, route page to TransactionViewer and pass it this transaction
     return (
-        <li className={transaction.amount > 0 ? "plus" : "minus"} id="transList" onClick={() => history.push({
+        <li className={transaction.amount > 0 ? "plus" : "minus", "clickableList"} onClick={() => history.push({
             pathname: "/TransactionViewer",
             search: `?=${transaction.id}`,
             state: { detail: transaction}
