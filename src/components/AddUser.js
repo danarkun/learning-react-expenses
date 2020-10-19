@@ -49,7 +49,7 @@ export const AddUser = () => {
                     <option value="USA">USA</option>
                 </select>
 
-                <input type="submit" value="Submit"></input>
+                <input type="submit" className="btn deleteButton" value="Submit"></input>
             </form>
         </div>
     )

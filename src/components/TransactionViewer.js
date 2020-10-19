@@ -5,7 +5,7 @@ import { GlobalContext } from '../context/GlobalState';
 
 export const TransactionViewer = () => {
     const location = useLocation();
-    const [transaction, setTransaction] = useState(location.state.detail);
+    const [transaction, setTransaction] = useState(VerifyState());
     const { userList } = useContext(GlobalContext);
     const { deleteTransaction } = useContext(GlobalContext);
 
@@ -14,7 +14,7 @@ export const TransactionViewer = () => {
 
     useEffect(() => {
         // Get transaction that we've been passed from clicked Transaction component
-        setTransaction(location.state.detail);
+        setTransaction(VerifyState);
     
         return() => {
             // Cleanup code
@@ -33,6 +33,15 @@ export const TransactionViewer = () => {
         deleteTransaction(transaction.id).then(() => {
             history.push("./Home");
         })
+    }
+
+    function VerifyState() {
+        if (location.state != null && location.state.detail != null)
+        {
+            return location.state.detail;
+        }
+        
+        return "trans";
     }
     
     return (

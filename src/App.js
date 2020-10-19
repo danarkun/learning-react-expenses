@@ -43,11 +43,16 @@ function App() {
               <li>
                 <NavLink to="/AddUser">Add User</NavLink>
               </li>
+              <li>
+                <NavLink to="TransactionViewer">TransactionViewer</NavLink>
+              </li>
             </ul>
           </HeaderColumn>
           <Switch>
             <ContentColumn>
-              <Redirect from="/" to="/Home" />
+              <Route exact path="/" render={() => (
+                <Redirect exact from="/" to="/Home" />
+              )} />
               <Route path="/AddUser" component={AddUser} />
               <Route path="/Home" component={Home} />
               <Route path="/TransactionViewer" component={TransactionViewer} />
