@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { NavLink, Switch, BrowserRouter as Router, Route } from 'react-router-dom';
+import { NavLink, Switch, BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import './App.css';
 import styled from 'styled-components'
 
@@ -38,7 +38,7 @@ function App() {
           <HeaderColumn>
             <ul className="nav" id="navButtons">
               <li>
-                <NavLink to="/Home">Home</NavLink>
+                <NavLink exact to="/Home">Home</NavLink>
               </li>
               <li>
                 <NavLink to="/AddUser">Add User</NavLink>
@@ -47,7 +47,7 @@ function App() {
           </HeaderColumn>
           <Switch>
             <ContentColumn>
-              <Route exact path="/" component={Home} />
+              <Redirect from="/" to="/Home" />
               <Route path="/AddUser" component={AddUser} />
               <Route path="/Home" component={Home} />
               <Route path="/TransactionViewer" component={TransactionViewer} />
