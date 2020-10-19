@@ -1,10 +1,10 @@
-import React from 'react';
-import { Link, Switch, BrowserRouter as Router, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { NavLink, Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import styled from 'styled-components'
 
 import { GlobalProvider } from './context/GlobalState';
-import { ExpenseTracker } from './components/ExpenseTracker';
+import { Home } from './components/Home';
 import { AddUser } from './components/AddUser';
 import { TransactionViewer } from './components/TransactionViewer';
 import { UserViewer } from './components/UserViewer';
@@ -24,25 +24,32 @@ const HeaderColumn = styled.div`
 `;
 
 function App() {
+
+  // useEffect(() => {
+  //   SetActive();
+  // })
+
+  var clicked;
+
   return (
     <GlobalProvider>
       <div>
         <Router>
           <HeaderColumn>
-            <ul className="nav">
-              <li className="active">
-                <Link to="/AddUser">Add User</Link>
+            <ul className="nav" id="navButtons">
+              <li>
+                <NavLink to="/Home">Home</NavLink>
               </li>
               <li>
-                <Link to="/ExpenseTracker">Expense Tracker</Link>
+                <NavLink to="/AddUser">Add User</NavLink>
               </li>
             </ul>
           </HeaderColumn>
           <Switch>
             <ContentColumn>
-              <Route exact path="/" component={ExpenseTracker} />
+              <Route exact path="/" component={Home} />
               <Route path="/AddUser" component={AddUser} />
-              <Route path="/ExpenseTracker" component={ExpenseTracker} />
+              <Route path="/Home" component={Home} />
               <Route path="/TransactionViewer" component={TransactionViewer} />
               <Route path="/UserViewer" component={UserViewer} />
             </ContentColumn>
@@ -51,6 +58,12 @@ function App() {
       </div >
     </GlobalProvider >
   );
+}
+
+function SetActive()
+{
+  var btnList = document.getElementById("navButtons");
+  var btns = btnList.getElementsByTagName('li');
 }
 
 export default App;

@@ -1,5 +1,3 @@
-import { AddTransaction } from "../components/AddTransaction";
-
 // How we specificy app state changes in response to actions to our context
 // Actions sent for reduction from GlobalState get handled depending on their action type
 // Reducer is the way to change your state and pass down to components

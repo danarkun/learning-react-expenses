@@ -23,7 +23,7 @@ export const AddUser = () => {
         }
 
         addUser(newUser).then(() => {
-            history.push("/ExpenseTracker");
+            history.push("/Home");
         })
     }
     

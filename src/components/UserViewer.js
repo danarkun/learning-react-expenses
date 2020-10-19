@@ -22,7 +22,7 @@ export const UserViewer = () => {
 
     function DeleteUser() {
         deleteUser(user.id).then(() => {
-            history.push("./ExpenseTracker");
+            history.push("./Home");
         })
     }
 

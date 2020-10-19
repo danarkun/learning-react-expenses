@@ -22,7 +22,7 @@ export const TransactionViewer = () => {
     }, [location])
 
     if (userList.find(x => x.id == transaction.user) === undefined) {
-        purchaser = "deleted used";
+        purchaser = "deleted user";
     }
     else {
         var user = userList.find(x => x.id == transaction.user);
@@ -31,7 +31,7 @@ export const TransactionViewer = () => {
 
     function DeleteTransaction() {
         deleteTransaction(transaction.id).then(() => {
-            history.push("./ExpenseTracker");
+            history.push("./Home");
         })
     }
     

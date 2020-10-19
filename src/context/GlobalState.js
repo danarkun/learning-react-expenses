@@ -4,44 +4,44 @@ import AppReducer from './AppReducer';
 // Initial state
 const initialState = {
     transactions: [
-        {
-            id: 321890,
-            text: "Salary",
-            amount: 2000,
-            user: 1,
-            timeStamp: new Date()
-        },
-        {
-            id: 839217,
-            text: "Groceries",
-            amount: -125,
-            user: 2,
-            timeStamp: new Date()
-        }
+        // {
+        //     id: 321890,
+        //     text: "Salary",
+        //     amount: 2000,
+        //     user: 1,
+        //     timeStamp: new Date()
+        // },
+        // {
+        //     id: 839217,
+        //     text: "Groceries",
+        //     amount: -125,
+        //     user: 2,
+        //     timeStamp: new Date()
+        // }
     ],
     totalTransactions: 0,
     userList: [
-        {
-            id: 1,
-            lname: "James",
-            fname: "Bel",
-            country: "Australia",
-            timeStamp: new Date()
-        },
-        {
-            id: 2,
-            lname: "Arkun",
-            fname: "Dan",
-            country: "Australia",
-            timeStamp: new Date()
-        },
-        {
-            id: 10251029,
-            lane: "Arkun",
-            fname: "Sophie",
-            country: "Canada",
-            timeStamp: new Date()
-        }
+        // {
+        //     id: 1,
+        //     lname: "James",
+        //     fname: "Bel",
+        //     country: "Australia",
+        //     timeStamp: new Date()
+        // },
+        // {
+        //     id: 2,
+        //     lname: "Arkun",
+        //     fname: "Dan",
+        //     country: "Australia",
+        //     timeStamp: new Date()
+        // },
+        // {
+        //     id: 10251029,
+        //     lane: "Arkun",
+        //     fname: "Sophie",
+        //     country: "Canada",
+        //     timeStamp: new Date()
+        // }
     ]
 }
 
