@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { unstable_renderSubtreeIntoContainer } from 'react-dom';
 import { useLocation, useHistory } from "react-router-dom";
+import { Router } from 'react-router-dom/cjs/react-router-dom.min';
 
 import { GlobalContext } from '../context/GlobalState';
 // import { TransactionDropDown } from './ShadowDOMs/TransactionDropDown';
@@ -46,15 +47,24 @@ export const TransactionViewer = () => {
     }
 
     function GetComponentToDraw() {
-        var ret;
+        // If coming from clicking Transaction Viewer need to select a transaction from drop down
         if (location.search == '?list')
             return <TransactionDropDown />;
-        else
+        else if (transaction == null) {
+            return <p>Loading...</p>
+        }
+        else {
             return <TransactionItem />
+        }
     }
 
     function SetSelectedTransaction(transaction) {
-        setTransaction(transaction);
+        let ret = transactions.find(t => t.id == transaction)
+        history.push({
+            pathname: "/TransactionViewer",
+            search: `transaction`,
+            state: { detail: ret }
+        })
     }
 
     class TransactionDropDown extends React.Component {
@@ -68,10 +78,17 @@ export const TransactionViewer = () => {
             let dropDown = document.createElement('select');
             dropDown.value = transaction;
 
+            let placeHolder = document.createElement('option');
+            placeHolder.value = "";
+            placeHolder.disabled = true;
+            placeHolder.selected = true;
+            placeHolder.appendChild(document.createTextNode("Select Transaction"));
+            dropDown.appendChild(placeHolder);
+
             transactions.forEach(t => {
                 let option = document.createElement('option');
                 option.appendChild(document.createTextNode(`${t.text}`));
-                option.value = `${t.text}`;
+                option.value = `${t.id}`;
                 dropDown.appendChild(option);
             })
 
@@ -89,7 +106,9 @@ export const TransactionViewer = () => {
     class TransactionItem extends React.Component {
         constructor() {
             super();
+        }
 
+        componentDidMount() {
             if (userList.find(x => x.id == transaction.user) === undefined) {
                 purchaser = "deleted user";
             }
@@ -116,7 +135,7 @@ export const TransactionViewer = () => {
     }
 
     return (
-        <div id="topDiv">
+        <div>
             <GetComponentToDraw />
         </div>
     )
