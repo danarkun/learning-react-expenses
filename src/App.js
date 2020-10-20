@@ -44,7 +44,7 @@ function App() {
                 <NavLink to="/AddUser">Add User</NavLink>
               </li>
               <li>
-                <NavLink to="TransactionViewer">TransactionViewer</NavLink>
+                <NavLink to="TransactionViewer?list">TransactionViewer</NavLink>
               </li>
             </ul>
           </HeaderColumn>
