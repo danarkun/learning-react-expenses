@@ -19,12 +19,6 @@ export const TransactionViewer = () => {
     var purchaser;
 
     useEffect(() => {
-        // TODO GET TRANSACTION FROM SEARCH
-        // THAT WAY NAVLINK FROM HOME PASSES IN ?=link QUERY SO WE KNOW TO RENDER TRANSACTION LIST INSTEAD OF TRYING TO RENDER A TRANSACTION
-
-        // If query == passedValue, use location.state.detail
-        // else display list
-
         // Get transaction that we've been passed from clicked Transaction component
         setTransaction(VerifyState);
 
@@ -115,6 +109,7 @@ export const TransactionViewer = () => {
             else {
                 var user = userList.find(x => x.id == transaction.user);
                 purchaser = `${user.fname} ${user.lname}`;
+                console.log(purchaser);
             }
         }
 
@@ -125,7 +120,10 @@ export const TransactionViewer = () => {
                     <br />
                     <p><b>Transaction: </b>{transaction.text}</p>
                     <p><b>Transaction Amount: </b>{transaction.amount >= 0 ? "+" : "-"}${Math.abs(transaction.amount)}</p>
-                    <p><b>Submitted by: </b>{purchaser}</p>
+                    <p><b>Submitted by: </b>{
+                    userList.find(x => x.id == transaction.user) == null ?
+                    "deleted used" :
+                    `${userList.find(x => x.id == transaction.user).fname} ${userList.find(x => x.id == transaction.user).lname}`}</p>
                     <p><b>Submitted at : </b>{transaction.timeStamp == undefined ? "Unknown time" : transaction.timeStamp.toString()}</p>
 
                     <button className="btn deleteButton" onClick={() => DeleteTransaction()}>DELETE TRANSACTION</button>
