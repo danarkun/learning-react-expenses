@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { unstable_renderSubtreeIntoContainer } from 'react-dom';
 import { useLocation, useHistory } from "react-router-dom";
-import { Router } from 'react-router-dom/cjs/react-router-dom.min';
 
 import { GlobalContext } from '../context/GlobalState';
 // import { TransactionDropDown } from './ShadowDOMs/TransactionDropDown';
@@ -16,7 +14,6 @@ export const TransactionViewer = () => {
 
 
     const history = useHistory();
-    var purchaser;
 
     useEffect(() => {
         // Get transaction that we've been passed from clicked Transaction component
@@ -34,21 +31,22 @@ export const TransactionViewer = () => {
     }
 
     function VerifyState() {
-        if (location.search == '?list') {
-            return;
+        if (location.search == '?transaction') {
+            return location.state.detail;
         }
-        return location.state.detail;
+        return;
     }
 
     function GetComponentToDraw() {
-        // If coming from clicking Transaction Viewer need to select a transaction from drop down
-        if (location.search == '?list')
-            return <TransactionDropDown />;
-        else if (transaction == null) {
-            return <p>Loading...</p>
+        // If coming from clicking Transaction Viewer, need to select a transaction from drop down
+        if (location.search == '?transaction') {
+            if (transaction == null)
+                return <p>Loading...</p>
+            else
+                return <TransactionItem />;
         }
         else {
-            return <TransactionItem />
+            return <TransactionDropDown />
         }
     }
 
@@ -102,28 +100,15 @@ export const TransactionViewer = () => {
             super();
         }
 
-        componentDidMount() {
-            if (userList.find(x => x.id == transaction.user) === undefined) {
-                purchaser = "deleted user";
-            }
-            else {
-                var user = userList.find(x => x.id == transaction.user);
-                purchaser = `${user.fname} ${user.lname}`;
-                console.log(purchaser);
-            }
-        }
-
         render() {
             return (
                 <div>
-                    <h1>TRANSACTION VIEWER</h1>
-                    <br />
                     <p><b>Transaction: </b>{transaction.text}</p>
                     <p><b>Transaction Amount: </b>{transaction.amount >= 0 ? "+" : "-"}${Math.abs(transaction.amount)}</p>
                     <p><b>Submitted by: </b>{
-                    userList.find(x => x.id == transaction.user) == null ?
-                    "deleted used" :
-                    `${userList.find(x => x.id == transaction.user).fname} ${userList.find(x => x.id == transaction.user).lname}`}</p>
+                        userList.find(x => x.id == transaction.user) == null ?
+                            "deleted used" :
+                            `${userList.find(x => x.id == transaction.user).fname} ${userList.find(x => x.id == transaction.user).lname}`}</p>
                     <p><b>Submitted at : </b>{transaction.timeStamp == undefined ? "Unknown time" : transaction.timeStamp.toString()}</p>
 
                     <button className="btn deleteButton" onClick={() => DeleteTransaction()}>DELETE TRANSACTION</button>
@@ -134,6 +119,8 @@ export const TransactionViewer = () => {
 
     return (
         <div>
+            <h1>TRANSACTION VIEWER</h1>
+            <br />
             <GetComponentToDraw />
         </div>
     )
