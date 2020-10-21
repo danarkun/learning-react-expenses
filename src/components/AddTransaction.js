@@ -13,7 +13,7 @@ export const AddTransaction = () => {
     const [text, setText] = useState('');
     const [amount, setAmount] = useState('');
     const [selectedUser, setSelected] = useState(false);
-    // Default user to first one if there are any
+    // Default to "select user" option
     const [user, setUser] = useState("default");
 
     const onSubmit = e => {

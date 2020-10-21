@@ -53,6 +53,7 @@ function App() {
               <Route exact path="/" render={() => (
                 <Redirect exact from="/" to="/Home" />
               )} />
+              <Route render={() => <Redirect to={{pathname: "/Home"}} />} />
               <Route path="/AddUser" component={AddUser} />
               <Route path="/Home" component={Home} />
               <Route path="/TransactionViewer" component={TransactionViewer} />
