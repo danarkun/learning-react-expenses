@@ -26,8 +26,8 @@ export const Transaction = ({ transaction }) => {
     return (
         <li className={`${transaction.amount > 0 ? "plus" : "minus"} clickableList`} onClick={() => history.push({
             pathname: "/TransactionViewer",
-            search: `?=${transaction.id}`,
-            state: { detail: transaction}
+            search: `transaction`,
+            state: { detail: transaction }
         }
         )}>
             {transaction.text} ({purchaser}) <span>{transaction.amount > 0 ? "+" : "-"}${Math.abs(transaction.amount)}</span>

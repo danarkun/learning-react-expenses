@@ -24,13 +24,6 @@ const HeaderColumn = styled.div`
 `;
 
 function App() {
-
-  // useEffect(() => {
-  //   SetActive();
-  // })
-
-  var clicked;
-
   return (
     <GlobalProvider>
       <div>
@@ -44,7 +37,7 @@ function App() {
                 <NavLink to="/AddUser">Add User</NavLink>
               </li>
               <li>
-                <NavLink to="TransactionViewer">TransactionViewer</NavLink>
+                <NavLink to="TransactionViewer?list">TransactionViewer</NavLink>
               </li>
             </ul>
           </HeaderColumn>
@@ -53,6 +46,7 @@ function App() {
               <Route exact path="/" render={() => (
                 <Redirect exact from="/" to="/Home" />
               )} />
+              <Route render={() => <Redirect to={{ pathname: "/Home" }} />} />
               <Route path="/AddUser" component={AddUser} />
               <Route path="/Home" component={Home} />
               <Route path="/TransactionViewer" component={TransactionViewer} />
@@ -65,8 +59,7 @@ function App() {
   );
 }
 
-function SetActive()
-{
+function SetActive() {
   var btnList = document.getElementById("navButtons");
   var btns = btnList.getElementsByTagName('li');
 }

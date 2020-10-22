@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { GlobalContext } from '../context/GlobalState';
 
-// export const AddUser = ( {history} ) => {
 export const AddUser = () => {
 
     const [fname, setFname] = useState('');

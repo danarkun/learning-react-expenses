@@ -121,6 +121,7 @@ input[type=text]:focus {
 
 .blocked {
   background-color: rgb(204, 204, 204);
+  cursor: not-allowed;
 }
 
 .deleteButton {
@@ -176,10 +177,6 @@ input[type=text]:focus {
   transform: translate(-100%, -50%);
   opacity: 0;
   transition: opacity 0.3s ease;
-}
-
-.list li:hover .delete-btn {
-  opacity: 1;
 }
 
 div.totalTrans {
