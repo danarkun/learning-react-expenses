@@ -1,3 +1,5 @@
+import { localStorage } from '../helpers/localStorage';
+
 // How we specificy app state changes in response to actions to our context
 // Actions sent for reduction from GlobalState get handled depending on their action type
 // Reducer is the way to change your state and pass down to components
@@ -32,6 +34,13 @@ export default (state, action) => {
                 userList: newState.userList.filter(user => user.id !== action.payload),
                 //, tell AddTransaction user select menu to update it's current user
             }
+            case 'CLEAR_DATA':
+                return {
+                    ...newState,
+                    transactions: [],
+                    totalTransactions: 0,
+                    userList: []
+                }
         default:
             return newState;
     }

@@ -32,8 +32,12 @@ export const AddTransaction = () => {
             timeStamp: new Date()
         }
 
-        addTransaction(newTransaction).then(() => {
+        addTransaction(newTransaction)
+        .then(() => {
             ResetForm();
+        })
+        .catch((err) => {
+            console.error(`AddTransaction promise error: ${err}`);
         })
     }
 

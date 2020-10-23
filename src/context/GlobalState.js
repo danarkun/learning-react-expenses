@@ -1,30 +1,15 @@
 import React, { createContext, useReducer, useEffect } from 'react';
-import { getData, storeData } from '../helpers/localStorage';
 import AppReducer from './AppReducer';
+import { getData, storeData } from '../helpers/localStorage';
 
 // Initial state
-const initialState = () => {
-    if (getData('data') === null) {
-        let state = {
-            transactions: [],
-            totalTransactions: 0,
-            userList: []
-        }
-        console.log("NO LOCAL STORAGE");
-        return state;
-    }
-    else
-    {
-        console.log("Found local storage");
-        return getData('data');
-    }
-}
+const initialState = () => getData('data') || initStateObj;
 
-// const initialState = {
-//     transactions: [],
-//     totalTransactions: 0,
-//     userList: []
-// }
+const initStateObj = {
+    transactions: [],
+    totalTransactions: 0,
+    userList: []
+}
 
 // const initialState = {
 //     transactions: [
@@ -83,6 +68,7 @@ export const GlobalProvider = ({ children }) => {
     // Setting our current state to initial state
     const [state, dispatch] = useReducer(AppReducer, initialState());
 
+    // Store data anytime state changes during a rerender
     useEffect(() => {
         storeData('data', state);
     }, [state]);
@@ -125,7 +111,19 @@ export const GlobalProvider = ({ children }) => {
         );
     }
 
+    function clearData() {
+        // return Promise.resolve(
+        //     dispatch({
+        //         type: 'CLEAR_DATA'
+        //     })
+        // );
+        dispatch({
+            type: 'CLEAR_DATA'
+        })
+    }
+
     // Wrapping all our components (headers, transaction list etc... in our provider) as children
+    // and giving them access to everything in the value prop
     return (<GlobalContext.Provider value={{
         transactions: state.transactions,
         totalTransactions: state.totalTransactions,
@@ -133,7 +131,8 @@ export const GlobalProvider = ({ children }) => {
         deleteTransaction,
         addTransaction,
         addUser,
-        deleteUser
+        deleteUser,
+        clearData
     }}>
         {children}
     </GlobalContext.Provider>)

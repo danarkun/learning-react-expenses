@@ -16,7 +16,7 @@ const UserInList = ({ user }) => {
     return (
         <li value={user.id} className="clickableList" onClick={() => history.push({
             pathname: "/UserViewer",
-            search: `?=${user.id}`,
+            search: `${user.id}`,
             state: { detail: user }
         }
         )}>
