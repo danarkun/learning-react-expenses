@@ -29,14 +29,6 @@ class TransactionDropDown extends HTMLElement {
 }
 customElements.define('transaction-dropdown', TransactionDropDown);
 
-// customElements.define('transaction-dropdown', TransactionDropDown);
-{/* <select id="country" name="country" value={country} onChange={e => setCountry(e.target.value)}>
-    <option value="Australia">Australia</option>
-    <option value="Canada">Canada</option>
-    <option value="USA">USA</option>
-</select> */}
-
-
 /*class TransactionDropDown extends HTMLElement {
         constructor() {
             super();

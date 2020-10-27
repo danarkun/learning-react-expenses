@@ -1,5 +1,6 @@
-import React from 'react'
+import React from 'react';
 import { useHistory } from "react-router-dom";
+import { MenuItem } from '@material-ui/core';
 
 export const User = ({ user, isList }) => {
     function ResolveComponentType() {
@@ -16,7 +17,7 @@ const UserInList = ({ user }) => {
     return (
         <li value={user.id} className="clickableList" onClick={() => history.push({
             pathname: "/UserViewer",
-            search: `?=${user.id}`,
+            search: `${user.id}`,
             state: { detail: user }
         }
         )}>
@@ -27,6 +28,6 @@ const UserInList = ({ user }) => {
 
 const UserInSelect = ({ user }) => {
     return (
-        <option value={user.id}>{user.fname} {user.lname}</option>
+        <MenuItem value={user.id}>{user.fname} {user.lname}</MenuItem>
     )
 }

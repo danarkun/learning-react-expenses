@@ -8,6 +8,7 @@ import { Home } from './components/Home';
 import { AddUser } from './components/AddUser';
 import { TransactionViewer } from './components/TransactionViewer';
 import { UserViewer } from './components/UserViewer';
+import { ClearForm } from './components/ClearForm';
 
 const ContentColumn = styled.div`
   top: 100px;
@@ -37,7 +38,10 @@ function App() {
                 <NavLink to="/AddUser">Add User</NavLink>
               </li>
               <li>
-                <NavLink to="TransactionViewer?list">TransactionViewer</NavLink>
+                <NavLink to="/TransactionViewer?list">TransactionViewer</NavLink>
+              </li>
+              <li>
+                <NavLink to="/ClearForm">Clear Form</NavLink>
               </li>
             </ul>
           </HeaderColumn>
@@ -51,6 +55,7 @@ function App() {
               <Route path="/Home" component={Home} />
               <Route path="/TransactionViewer" component={TransactionViewer} />
               <Route path="/UserViewer" component={UserViewer} />
+              <Route path="/ClearForm" component={ClearForm} />
             </ContentColumn>
           </Switch>
         </Router>
