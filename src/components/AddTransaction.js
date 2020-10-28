@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { User } from './User'
+import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { TextField, Select, FormControl, MenuItem, InputLabel, FormHelperText } from '@material-ui/core';
 import { GlobalContext } from '../context/GlobalState';
@@ -29,6 +29,7 @@ export const AddTransaction = () => {
     const [userID, setUser] = useState("default");
 
     const classes = useStyles();
+    const history = useHistory();
 
     const onSubmit = e => {
         e.preventDefault();
@@ -36,7 +37,7 @@ export const AddTransaction = () => {
             alert("Select a user");
             return;
         }
-        
+
         const newTransaction = {
             id: generateID(),
             text,
@@ -46,6 +47,9 @@ export const AddTransaction = () => {
         }
 
         addTransaction(newTransaction)
+            .then(() => {
+                history.push("./Home");
+            })
             .then(() => {
                 ResetForm();
             })

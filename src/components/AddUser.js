@@ -6,7 +6,8 @@ export const AddUser = () => {
 
     const [fname, setFname] = useState('');
     const [lname, setLname] = useState('');
-    const [country, setCountry] = useState('Australia');
+    const [email, setEmail] = useState('');
+
     const { addUser } = useContext(GlobalContext);
     const history = useHistory();
 
@@ -17,7 +18,7 @@ export const AddUser = () => {
             id: generateID(),
             lname,
             fname,
-            country,
+            email,
             timeStamp: new Date()
         }
 
@@ -29,7 +30,7 @@ export const AddUser = () => {
     function generateID() {
         return Math.floor(Math.random() * 1000000)
     }
-
+    
     return (
         <div>
             <h1>ADD USER</h1>
@@ -41,12 +42,8 @@ export const AddUser = () => {
                 <label htmlFor="lname">Last Name</label>
                 <input type="text" id="lname" className="textInput" name="lastname" placeholder="Your last name.." value={lname} onChange={e => setLname(e.target.value)} required></input>
                 
-                <label htmlFor="country">Country</label>
-                <select id="country" name="country" value={country} onChange={e => setCountry(e.target.value)}>
-                    <option value="Australia">Australia</option>
-                    <option value="Canada">Canada</option>
-                    <option value="USA">USA</option>
-                </select>
+                <label htmlFor="country">Email</label>
+                <input type="text" id="email" className="textInput" name="email" placeholder="Your Email.." value={email} onChange={e => setEmail(e.target.value)} required></input>
 
                 <input type="submit" className="btn deleteButton" value="Submit"></input>
             </form>

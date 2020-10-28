@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from "react-router-dom";
 import { MenuItem } from '@material-ui/core';
+import { NodeMailer } from 'nodemailer';
 
 export const User = ({ user, isList }) => {
     function ResolveComponentType() {
@@ -21,7 +22,7 @@ const UserInList = ({ user }) => {
             state: { detail: user }
         }
         )}>
-            {user.fname} {user.lname}
+            {user.fname} {user.lname} <span>{user.email}</span>
         </li>
     )
 }

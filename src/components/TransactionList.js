@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import { useHistory } from "react-router-dom";
-import { Transaction } from './Transaction';
 import { DataGrid } from '@material-ui/data-grid';
 
 export const TransactionList = () => {

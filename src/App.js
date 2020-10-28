@@ -9,6 +9,7 @@ import { AddUser } from './components/AddUser';
 import { TransactionViewer } from './components/TransactionViewer';
 import { UserViewer } from './components/UserViewer';
 import { ClearForm } from './components/ClearForm';
+import { AddTransaction } from './components/AddTransaction';
 
 const ContentColumn = styled.div`
 position: absolute;
@@ -39,6 +40,9 @@ function App() {
                 <NavLink to="/AddUser">Add User</NavLink>
               </li>
               <li>
+                <NavLink to="/AddTransaction">Add Transaction</NavLink>
+              </li>
+              <li>
                 <NavLink to="/TransactionViewer?list">TransactionViewer</NavLink>
               </li>
               <li>
@@ -57,6 +61,7 @@ function App() {
               <Route path="/TransactionViewer" component={TransactionViewer} />
               <Route path="/UserViewer" component={UserViewer} />
               <Route path="/ClearForm" component={ClearForm} />
+              <Route path="/AddTransaction" component={AddTransaction} />
             </ContentColumn>
           </Switch>
         </Router>

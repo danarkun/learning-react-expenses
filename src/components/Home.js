@@ -17,7 +17,6 @@ export const Home = () => {
             <IncomeExpenses />
             <TotalTransactions />
             <TransactionList />
-            <AddTransaction />
             </div>
         </div>
     )
