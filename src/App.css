@@ -172,6 +172,10 @@ input[type=text]:focus {
   background-color: rgb(204, 204, 204);
 }
 
+.MuiDataGrid-cell:hover {
+  cursor: pointer;
+}
+
 .list li {
   background-color: #fff;
   box-shadow: var(--box-shadow);

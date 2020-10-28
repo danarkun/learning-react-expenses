@@ -25,14 +25,21 @@ export const TransactionList = () => {
         return user == undefined ? 'deleted user' : `${user.fname} ${user.lname}`
     }
 
+    // Parse transactions time stamp to an easily readable date
+    function GetDate(date) {
+        const dateString = new Date(date);
+        return `${dateString.toLocaleDateString()} ${dateString.toLocaleTimeString()}`
+    }
+
     return (
         <>
-            <div style={{ height: 500, width: '100%' }}>
+            <div style={{ height: 500, width: 600 }}>
                 <DataGrid
                     columns={[
                         { field: 'text', headerName: 'Transaction', width: 175, renderCell: (params) => (<strong>{params.value}</strong>)},
                         { field: 'amount', headerName: 'Amount', type: 'number' },
-                        { field: 'user', headerName: 'Submitted By', width: 200, valueFormatter: ( { value }) => GetUser(value)}
+                        { field: 'user', headerName: 'Submitted By', width: 130, valueFormatter: ( { value }) => GetUser(value)},
+                        { field: 'timeStamp', headerName: 'Submitted At', width: 200, type: 'date', valueFormatter: ( { value }) => GetDate(value)}
                     ]}
                     rows={transactions}
                     onCellClick={t => OnTransactionClick(t.data)}
