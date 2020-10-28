@@ -1,6 +1,18 @@
 import React, { useState, useContext } from 'react'
 import { User } from './User'
+import { makeStyles } from '@material-ui/core/styles';
+import { TextField, Select, FormControl, MenuItem, InputLabel, FormHelperText } from '@material-ui/core';
 import { GlobalContext } from '../context/GlobalState';
+
+const useStyles = makeStyles((theme) => ({
+    formControl: {
+        margin: theme.spacing(1),
+        minWidth: 120,
+    },
+    selectEmpty: {
+        marginTop: theme.spacing(0),
+    },
+}));
 
 export const AddTransaction = () => {
     // Create piece of state (text) and function to manipulate that state (setText)
@@ -14,27 +26,40 @@ export const AddTransaction = () => {
     const [amount, setAmount] = useState('');
     const [selectedUser, setSelected] = useState(false);
     // Default to "select user" option
-    const [user, setUser] = useState("default");
+    const [userID, setUser] = useState("default");
+
+    const classes = useStyles();
 
     const onSubmit = e => {
         e.preventDefault();
-        if (!selectedUser)
-        {
+        if (!selectedUser) {
             alert("Select a user");
             return;
         }
+
+        // Get user object from userID
+        const userObj = GetUser(userID);
 
         const newTransaction = {
             id: generateID(),
             text,
             amount: +amount,
-            user,
-            timeStamp: new Date()
+            user: userID,
+            timeStamp: new Date(),
+            userName: `${userObj.fname} ${userObj.lname}`
         }
 
-        addTransaction(newTransaction).then(() => {
-            ResetForm();
-        })
+        addTransaction(newTransaction)
+            .then(() => {
+                ResetForm();
+            })
+            .catch((err) => {
+                console.error(`AddTransaction promise error: ${err}`);
+            })
+    }
+
+    function GetUser(userID) {
+        return userList.find(u => u.id == userID);
     }
 
     function SetDefaultUser() {
@@ -56,34 +81,47 @@ export const AddTransaction = () => {
         return Math.floor(Math.random() * 1000000)
     }
 
-    function SelectUser(user)
-    {
+    function SelectUser(user) {
         setUser(user);
         setSelected(true);
     }
-
-    // TODO when user is deleted, onChange() doesn't get called to set the currently selected transaction user,
-    // thus uses the previously selected users ID (now undefined)
 
     return (
         <>
             <h3>Add new transaction</h3>
             <form name="transForm" id="transForm" onSubmit={onSubmit}>
                 <div className="form-control">
-                    <label htmlFor="text"><b>Text</b></label>
-                    <input type="text" value={text} onChange={e => setText(e.target.value)} placeholder="Enter text..." required />
+                    <label htmlFor="text"><b>Text</b></label><br />
+                    <TextField variant="outlined" type="text" value={text} onChange={e => setText(e.target.value)} placeholder="Enter text..." required />
                 </div>
                 <div className="form-control">
                     <label htmlFor="amount"
-                    ><b>Amount</b> <br />(Negative: expense, Positive: income)</label>
-                    <input type="number" value={amount} onChange={e => setAmount(e.target.value)} placeholder="Enter amount..." required />
+                    ><b>Amount</b> <br />(Negative: expense, Positive: income)</label><br />
+                    <TextField variant="outlined" type="number" value={amount} onChange={e => setAmount(e.target.value)} placeholder="Enter amount..." required />
                 </div>
                 <div className="formcontrol">
-                    <label htmlFor="user">Assign User</label><br />
-                    <select id="user" name="user" value={user} onChange={e => SelectUser(e.target.value)} required>
-                        <option value="default" disabled>{`${userList.length === 0 ? "No Users" : "Select User"}`}</option>
-                        {userList.map(user => (<User key={user.id} user={user} isList={false} />))}
-                    </select>
+                    <label htmlFor="user"><b>Assign User</b></label><br />
+
+
+                    <FormControl variant="outlined" className={classes.formControl}>
+                        <Select
+                            id="user"
+                            name="user"
+                            value={userID}
+                            onChange={e => SelectUser(e.target.value)}
+                            displayEmpty
+                            className={classes.selectEmpty}
+                            inputProps={{ "aria-label": "Without label" }}
+                            required
+                        >
+                            <MenuItem value="default" disabled>
+                                Select User
+                            </MenuItem>
+                            {userList.map((user) =>
+                                <MenuItem key={user.id} value={user.id}>{user.fname} {user.lname}</MenuItem>)}
+                        </Select>
+                        <FormHelperText>User</FormHelperText>
+                    </FormControl>
                 </div>
                 <input type="submit" id="subButton" className={`${userList.length === 0 ? "blocked" : ""} btn`} value={userList.length === 0 ? "Add Atleast One User" : "Add transaction"}></input>
             </form>

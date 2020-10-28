@@ -21,7 +21,7 @@ body {
 
 .container {
   margin: 30px auto;
-  width: 350px;
+  width: 500px;
 }
 
 h1 {
@@ -73,6 +73,25 @@ h6 {
   border-right: 1px solid #dedede;
 }
 
+.homeHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+#homeHeader > div {
+  flex: 1;
+}
+
+#clearData {
+  cursor: pointer;
+  background-color: #e74c3c;
+  border: 0;
+  color: #fff;
+  font-size: 20px;
+  line-height: 20px;
+  padding: 2px 5px;
+}
+
 .money {
   font-size: 20px;
   letter-spacing: 1px;
@@ -117,6 +136,11 @@ input[type=text]:focus {
   margin: 10px 0 30px;
   padding: 10px;
   width: 100%;
+}
+
+#clearData {
+  width: 200px;
+  height: 75px;
 }
 
 .blocked {

@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { GlobalContext } from '../context/GlobalState';
 
 export const Header = () => {
+    const { clearData } = useContext(GlobalContext);
+
     return (
-        <h1>
-            Home
-        </h1>
+        <div className="homeHeader">
+            <h1>
+                Home
+            </h1>
+        </div>
     )
 }
