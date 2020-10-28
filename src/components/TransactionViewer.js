@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { useLocation, useHistory } from "react-router-dom";
+import { useLocation, useHistory, NavLink } from "react-router-dom";
 
 import { GlobalContext } from '../context/GlobalState';
 // import { TransactionDropDown } from './ShadowDOMs/TransactionDropDown';
@@ -47,6 +47,26 @@ export const TransactionViewer = () => {
         }
         else {
             return <TransactionDropDown />
+        }
+    }
+
+
+
+    function GetUserLink() {
+        const user = userList.find(x => x.id == transaction.user) == null ?
+        "deleted used" :
+        userList.find(x => x.id == transaction.user);
+
+        if (userList.find(x => x.id == transaction.user) == null) {
+            return <p>deleted user</p>
+        }
+        else {
+            return <NavLink to={{
+                pathname: "/UserViewer",
+                search: `${user.id}`,
+                state: { detail: user }
+            }}>{`${user.fname} ${user.lname}`}
+            </NavLink>
         }
     }
 
@@ -106,10 +126,7 @@ export const TransactionViewer = () => {
                     <h1>{this.props.propName}</h1>
                     <p><b>Transaction: </b>{transaction.text}</p>
                     <p><b>Transaction Amount: </b>{transaction.amount >= 0 ? "+" : "-"}${Math.abs(transaction.amount)}</p>
-                    <p><b>Submitted by: </b>{
-                        userList.find(x => x.id == transaction.user) == null ?
-                            "deleted used" :
-                            `${userList.find(x => x.id == transaction.user).fname} ${userList.find(x => x.id == transaction.user).lname}`}</p>
+                    <b>Submitted by: </b><GetUserLink />
                     <p><b>Submitted at : </b>{transaction.timeStamp == undefined ? "Unknown time" : transaction.timeStamp.toString()}</p>
 
                     <button className="btn deleteButton" onClick={() => DeleteTransaction()}>DELETE TRANSACTION</button>
