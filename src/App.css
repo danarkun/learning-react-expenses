@@ -8,6 +8,7 @@
   box-sizing: border-box;
 }
 
+html,
 body {
   background-color: #f7f7f7;
   display: flex;
@@ -17,6 +18,9 @@ body {
   min-height: 100vh;
   margin: 0;
   font-family: 'Lato', sans-serif;
+
+  height: 100%;
+  width: 100%;
 }
 
 .container {
@@ -64,12 +68,12 @@ h6 {
   margin: 20px 0;
 }
 
-.inc-exp-container > div {
+.inc-exp-container>div {
   flex: 1;
   text-align: center;
 }
 
-.inc-exp-container > div:first-of-type {
+.inc-exp-container>div:first-of-type {
   border-right: 1px solid #dedede;
 }
 
@@ -78,7 +82,7 @@ h6 {
   justify-content: space-between;
 }
 
-#homeHeader > div {
+#homeHeader>div {
   flex: 1;
 }
 
@@ -149,7 +153,7 @@ input[type=text]:focus {
 }
 
 .deleteButton {
-  width: 15%;
+  width: 200px;
 }
 
 .btn:focus,
@@ -238,17 +242,17 @@ div.totalTrans {
 }
 
 #fname.textInput {
-  padding:8px;display:block;border:none;border-bottom:1px solid #ccc;width:25%;
+  padding: 8px;
+  display: block;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  width: 300px;
 }
 
 #lname.textInput {
-  padding:8px;display:block;border:none;border-bottom:1px solid #ccc;width:25%;
+  padding: 8px;
+  display: block;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  width: 300px;
 }
-
-/* select {
-  width: 50%;
-}
-
-select > option {
-  background-color: #2ecc71;
-} */

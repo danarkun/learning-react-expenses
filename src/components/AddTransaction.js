@@ -36,17 +36,13 @@ export const AddTransaction = () => {
             alert("Select a user");
             return;
         }
-
-        // Get user object from userID
-        const userObj = GetUser(userID);
-
+        
         const newTransaction = {
             id: generateID(),
             text,
             amount: +amount,
             user: userID,
             timeStamp: new Date(),
-            userName: `${userObj.fname} ${userObj.lname}`
         }
 
         addTransaction(newTransaction)
@@ -56,10 +52,6 @@ export const AddTransaction = () => {
             .catch((err) => {
                 console.error(`AddTransaction promise error: ${err}`);
             })
-    }
-
-    function GetUser(userID) {
-        return userList.find(u => u.id == userID);
     }
 
     function SetDefaultUser() {

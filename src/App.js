@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { NavLink, Switch, BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import './App.css';
 import styled from 'styled-components'
@@ -11,10 +11,11 @@ import { UserViewer } from './components/UserViewer';
 import { ClearForm } from './components/ClearForm';
 
 const ContentColumn = styled.div`
-  top: 100px;
-  left: 50px;
-  position: absolute;
-  width: 100%;
+position: absolute;
+top: 100px;
+left: 35%;
+// /* bring your own prefixes */
+// transform: translate(-50%, -50%);
 `;
 
 const HeaderColumn = styled.div`
