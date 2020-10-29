@@ -15,8 +15,6 @@ const ContentColumn = styled.div`
 position: absolute;
 top: 100px;
 left: 35%;
-// /* bring your own prefixes */
-// transform: translate(-50%, -50%);
 `;
 
 const HeaderColumn = styled.div`
@@ -68,11 +66,6 @@ function App() {
       </div >
     </GlobalProvider >
   );
-}
-
-function SetActive() {
-  var btnList = document.getElementById("navButtons");
-  var btns = btnList.getElementsByTagName('li');
 }
 
 export default App;

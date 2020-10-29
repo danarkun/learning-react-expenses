@@ -41,7 +41,7 @@ export const UserViewer = () => {
     }
 
     return (
-        <div>
+        <div className="component">
             <h1>USER VIEWER</h1>
             <br />
 

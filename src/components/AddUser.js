@@ -42,7 +42,7 @@ export const AddUser = () => {
       }
 
     return (
-        <div>
+        <div className="component">
             <h1>ADD USER</h1>
             <br />
             <form onSubmit={onSubmit}>

@@ -167,6 +167,10 @@ input[type=text]:focus {
   margin-bottom: 40px;
 }
 
+.clickableList {
+  transition: 0.3s;
+}
+
 .clickableList:hover {
   cursor: pointer;
   background-color: rgb(204, 204, 204);
@@ -215,6 +219,10 @@ div.totalTrans {
   position: relative;
 }
 
+div.totalTrans #display {
+  width: 25px;
+}
+
 .nav {
   list-style-type: none;
   margin: 0;
@@ -259,4 +267,9 @@ div.totalTrans {
   border: none;
   border-bottom: 1px solid #ccc;
   width: 300px;
+}
+
+.component {
+  top: 1000px;
+  left: 50px;
 }

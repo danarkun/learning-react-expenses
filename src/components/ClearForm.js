@@ -3,8 +3,8 @@ import { useHistory } from "react-router-dom";
 import { Button } from '@material-ui/core';
 
 import { GlobalContext } from '../context/GlobalState';
-  
-  export const ClearForm = () => {
+
+export const ClearForm = () => {
     const { clearData } = useContext(GlobalContext);
     const history = useHistory();
 
@@ -17,8 +17,8 @@ import { GlobalContext } from '../context/GlobalState';
     }
 
     return (
-        <>
+        <div className="component">
             <Button variant="contained" color="secondary" onClick={ConfirmClear}>Clear Form</Button>
-        </>
+        </div>
     )
 }

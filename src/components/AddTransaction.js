@@ -83,7 +83,7 @@ export const AddTransaction = () => {
     }
 
     return (
-        <>
+        <div className="component">
             <h3>Add new transaction</h3>
             <form name="transForm" id="transForm" onSubmit={onSubmit}>
                 <div className="form-control">
@@ -121,6 +121,6 @@ export const AddTransaction = () => {
                 </div>
                 <input type="submit" id="subButton" className={`${userList.length === 0 ? "blocked" : ""} btn`} value={userList.length === 0 ? "Add Atleast One User" : "Add transaction"}></input>
             </form>
-        </>
+        </div>
     )
 }

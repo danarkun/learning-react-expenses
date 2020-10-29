@@ -54,8 +54,8 @@ export const TransactionViewer = () => {
 
     function GetUserLink() {
         const user = userList.find(x => x.id == transaction.user) == null ?
-        "deleted used" :
-        userList.find(x => x.id == transaction.user);
+            "deleted used" :
+            userList.find(x => x.id == transaction.user);
 
         if (userList.find(x => x.id == transaction.user) == null) {
             return <p>deleted user</p>
@@ -136,7 +136,7 @@ export const TransactionViewer = () => {
     }
 
     return (
-        <div>
+        <div className="component">
             <h1>TRANSACTION VIEWER</h1>
             <br />
             <GetComponentToDraw />
